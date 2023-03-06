@@ -1,22 +1,27 @@
 #include "main.h"
 /**
-* _strchr - function that retuns a character in a string
+* _strspn - function to return length of a prefix substring
 * @s: The string
-* @c: The returned character
-* Return: Return the character
+* @accept: the prefix substring
+* Return: length of the prefix
 */
 
-
-char *_strchr(char *s, char c)
+unsigned int _strspn(char *s, char *accept)
 {
-	int i;
+	int length = 0, i;
 
-	for (i = 0; s[i] != '\0'; i++)
+	for (i = 0; s[i] != '\0' && accept[i] != '\0';  i++)
 	{
-		if (s[i] == c)
-			return (s + i);
+		if (s[i] == accept[i])
+			length++;
+		return (sizeof(length) + 1);
+
 	}
-	if (s[i] == c)
-		return (s + i);
-	return ('\0');
+	if (s[i] == accept[i])
+	{
+		length++;
+		return (sizeof(length) + 1);
+	}
+
+	return (0);
 }
